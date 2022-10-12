@@ -10,11 +10,18 @@ public class CharacterMovement : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rbody;
     private Animator anim;
- 
+
+    private bool hasKey = false;
+
     private void Awake()
     {
         rbody = GetComponent<Rigidbody2D>();
         anim = gameObject.GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        hasKey = false;
     }
 
     void OnMove(InputValue value)
@@ -49,7 +56,15 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.name == "Door")
+        if(collision.gameObject.name == "Key")
+        {
+            hasKey = true;
+            Destroy(collision.gameObject);
+            Debug.Log("Got Key");
+        }
+        if (collision.gameObject.name == "Door")
+        {
             Debug.Log("Door Hit");
+        }
     }
 }
