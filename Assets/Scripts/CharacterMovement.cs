@@ -46,4 +46,10 @@ public class CharacterMovement : MonoBehaviour
     {
         Movement();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "Door")
+            Debug.Log("Door Hit");
+    }
 }
