@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
  
 public class CharacterMovement : MonoBehaviour
 {
@@ -60,11 +61,10 @@ public class CharacterMovement : MonoBehaviour
         {
             hasKey = true;
             Destroy(collision.gameObject);
-            Debug.Log("Got Key");
         }
-        if (collision.gameObject.name == "Door")
+        if (collision.gameObject.name == "Door" && hasKey)
         {
-            Debug.Log("Door Hit");
+            SceneManager.LoadScene("ApartmentLobby");
         }
     }
 }
